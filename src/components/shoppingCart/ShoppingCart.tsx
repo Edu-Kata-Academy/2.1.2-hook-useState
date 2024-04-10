@@ -2,14 +2,16 @@ import { useState, FC } from "react";
 import CartItems from "../cartItems/CartItems";
 import Product from "../product/Product";
 import { CartItemType, ProductType } from "../../types";
+import "./index.scss";
+import { chocolate, cookie, tea } from "../../assets";
 
 const ShoppingCart: FC = () => {
   const [cart, setCart] = useState<CartItemType[]>([]);
 
   const products: ProductType[] = [
-    { id: 1, name: "Шоколад" },
-    { id: 2, name: "Печенье" },
-    { id: 3, name: "Чай" },
+    { id: 1, name: "Шоколад", image: chocolate },
+    { id: 2, name: "Печенье", image: cookie },
+    { id: 3, name: "Чай", image: tea },
   ];
 
   const addToCart = (product: ProductType) => {
@@ -23,12 +25,14 @@ const ShoppingCart: FC = () => {
   };
 
   return (
-    <div>
-      <h2>Товары:</h2>
-      {products.map((product) => (
-        <Product key={product.id} product={product} onAddToCart={addToCart} />
-      ))}
-      <h2>Корзина:</h2>
+    <div className="cart">
+      <h2 className="cart__title">Товары:</h2>
+      <div className="cart__item">
+        {products.map((product) => (
+          <Product key={product.id} product={product} onAddToCart={addToCart} />
+        ))}
+      </div>
+      <h2 className="catr__basket">Корзина:</h2>
       <CartItems cart={cart} />
     </div>
   );

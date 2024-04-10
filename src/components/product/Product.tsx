@@ -1,4 +1,5 @@
 import { ProductType } from "../../types";
+import './index.scss'
 
 type ProductProps = {
   product: ProductType;
@@ -6,9 +7,10 @@ type ProductProps = {
 };
 
 const Product: React.FC<ProductProps> = ({ product, onAddToCart }) => (
-  <div>
+  <div className="addtocart">
     {product.name}
-    <button onClick={() => onAddToCart(product)}>Добавить в корзину</button>
+    <img src={product.image} alt="" />
+    <button className="addtocart__btn" onClick={() => onAddToCart(product)}>Добавить в корзину</button>
   </div>
 );
 

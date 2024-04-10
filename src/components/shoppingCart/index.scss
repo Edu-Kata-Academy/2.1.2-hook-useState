@@ -1,0 +1,9 @@
+.cart {
+  background-color: rgb(235, 240, 233);
+  padding: 50px;
+
+  &__item {
+    display: flex;
+    gap: 2rem;
+  }
+}
